@@ -1,11 +1,17 @@
-org 0x7C00
+org 0x0
 bits 16
 
 %define ENDL 0x0D, 0x0A  ; Define newline characters (carriage return and line feed)
 
 start:
-	jmp main  ; Jump to the main routine
+	; print hello world message
+    mov si, msg_hello
+    call puts
 
+.halt:
+    ; Infinite loop to prevent further execution
+	cli
+    hlt
 
 ;
 ; Function to display a string on the screen
@@ -36,27 +42,4 @@ puts:
 	pop si
 	ret
 
-main: 
-	; Initialize data segment registers
-	mov ax, 0
-	mov ds, ax
-	mov es, ax
-
-	; Initialize stack segment
-	mov ss, ax
-	mov sp, 0x7C00	; Set stack pointer
-
-	; Display the "Hello world" message
-	mov si, msg_hello
-	call puts
-
-	hlt  ; Halt the CPU
-
-.halt:
-	jmp .halt  ; Infinite loop to prevent further execution
-
-
-msg_hello: db 'Hello world!', ENDL, 0  ; Define the message with a newline
-
-times 510-($-$$) db 0  ; Fill the rest of the boot sector with zeros
-dw 0AA55h  ; Boot sector signature
+msg_hello: db 'Hello world from AjitOS Kernel!', ENDL, 0  ; Define the message with a newline
