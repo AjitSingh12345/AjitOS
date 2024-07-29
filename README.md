@@ -49,4 +49,5 @@ Additionally, you need to set up a GCC cross-compiler for i686-elf. Follow the i
 
 ### Demo
 
-[![Watch the AjitOS Demo](https://via.placeholder.com/150)](file:///C:/Users/asing/Videos/Captures/AjitOS%20Demo.mp4)
+https://github.com/user-attachments/assets/fbaff960-c44a-4771-b801-d552761188b5
+
