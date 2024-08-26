@@ -2,7 +2,7 @@ bits 16
 
 section _START class=CODE
 
-extern _cstart_
+extern _my_cstart_
 global _entry_point
 
 _entry_point:
@@ -14,10 +14,10 @@ _entry_point:
     mov bp, sp
     sti
 
-    ; Boot drive expected in DL, passing it to _cstart_
+    ; Boot drive expected in DL, passing it to _my_cstart_
     xor dh, dh
     push dx
-    call _cstart_
+    call _my_cstart_
 
     cli
     hlt
